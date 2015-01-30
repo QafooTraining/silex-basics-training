@@ -15,7 +15,7 @@ class AcmeApplication extends Application
         parent::run();
     }
 
-    public function registerControllers()
+    protected function registerControllers()
     {
         $this->mount('/', new \Acme\AcmeHelloController());
         $this->mount('/', new \Acme\HelloController());
