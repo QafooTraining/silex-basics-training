@@ -27,13 +27,13 @@ class AcmeApplication extends Application
      */
     private $config = array();
 
-    public function run()
+    public function boot()
     {
         $this->loadConfiguration();
         $this->registerProviders();
         $this->registerControllers();
 
-        parent::run();
+        parent::boot();
     }
 
     private function loadConfiguration()
