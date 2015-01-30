@@ -37,5 +37,14 @@ class AcmeApplication extends Application
         ));
         $this->register(new Provider\ServiceControllerServiceProvider());
         $this->register(new Provider\UrlGeneratorServiceProvider());
+
+        $this->register(new Provider\TranslationServiceProvider(), array(
+            'locale_fallbacks' => array('de'),
+        ));
+
+        $this['translator'] = $this->share($this->extend('translator', function($translator, $app) {
+            // TODO: Add database translator
+            return $translator;
+        }));
     }
 }
