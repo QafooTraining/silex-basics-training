@@ -5,7 +5,9 @@
         "silex/web-profiler": "~1.0",
         "monolog/monolog": "~1.12",
         "symfony/monolog-bridge": "@stable",
-        "symfony/translation": "@stable"
+        "symfony/translation": "@stable",
+        "sorien/silex-dbal-profiler": "~1.1",
+        "doctrine/dbal": "~2.5"
     },
     "autoload": {
         "psr-0": {"Acme\\": "src"}

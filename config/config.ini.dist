@@ -1,0 +1,4 @@
+debug=true
+database.name=app
+database.user=root
+database.password=
