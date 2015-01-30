@@ -5,6 +5,9 @@ namespace Acme;
 use Silex\Application;
 use Silex\Provider;
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 class AcmeApplication extends Application
 {
     /**
@@ -27,13 +30,24 @@ class AcmeApplication extends Application
      */
     private $config = array();
 
-    public function boot()
+    public function __construct(array $values = array())
     {
+        parent::__construct($values);
+
         $this->loadConfiguration();
         $this->registerProviders();
         $this->registerControllers();
 
-        parent::boot();
+        $this->before(function(Request $request, Application $app) {
+            // Implement Session checks here!!!
+            if ($request->getPathInfo() !== "/login") {
+                $user = $app['session']->get('user');
+
+                if (false) {
+                    return new RedirectResponse('/login');
+                }
+            }
+        });
     }
 
     private function loadConfiguration()
