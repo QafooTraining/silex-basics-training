@@ -1,5 +1,12 @@
 {
     "require": {
-        "silex/silex": "~1.2"
+        "silex/silex": "~1.2",
+        "twig/twig": "@stable",
+        "silex/web-profiler": "~1.0",
+        "monolog/monolog": "~1.12",
+        "symfony/monolog-bridge": "@stable"
+    },
+    "autoload": {
+        "psr-0": {"Acme\\": "src"}
     }
 }
