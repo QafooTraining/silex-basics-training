@@ -65,6 +65,7 @@ class AcmeApplication extends Application
         ));
         $this->register(new Provider\ServiceControllerServiceProvider());
         $this->register(new Provider\UrlGeneratorServiceProvider());
+        $this->register(new Provider\SessionServiceProvider());
 
         $this->register(new Provider\TranslationServiceProvider(), array(
             'locale_fallbacks' => array('de'),
