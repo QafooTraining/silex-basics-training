@@ -5,16 +5,42 @@ namespace Acme;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * Abstract controller for modular Silex applications.
+ *
+ * Simplifies access to service locator and registration of routes.
+ */
 abstract class AcmeController implements ControllerProviderInterface
 {
-    private $app;
+    /**
+     * @var \Acme\AcmeApplication
+     */
+    protected $app;
+
     private $controllers;
 
+    /**
+     * implement this in your controller and call `registerRoute`
+     * for each action.
+     *
+     * @return void
+     */
     abstract protected function registerRoutes();
 
-    protected function registerRoute($name, $pattern, $action)
+    /**
+     * Register Routes for this controller.
+     *
+     * @param string $name
+     * @param string $pattern
+     * @param string $actionMethod
+     * @return void
+     */
+    protected function registerRoute($name, $pattern, $actionMethod)
     {
-        $this->controllers->match($pattern, array($this, $action))->bind($name);
+        $this->controllers->match($pattern, array($this, $actionMethod))->bind($name);
     }
 
     final public function connect(Application $app)

@@ -9,11 +9,17 @@ class HelloController extends AcmeController
 {
     public function registerRoutes()
     {
-        $this->registerRoute('hello2', '/hello2', 'helloAction');
+        $this->registerRoute('helloworld', '/hello-world', 'helloAction');
+        $this->registerRoute('hello_twig', '/hello-twig', 'twigAction');
     }
 
     public function helloAction(Request $request)
     {
-        return new Response('Hello World 2!');
+        return new Response('Hello World!');
+    }
+
+    public function twigAction(Request $request)
+    {
+        return $this->app->render('Hello/twig.html.twig');
     }
 }

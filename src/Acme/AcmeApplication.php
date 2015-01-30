@@ -7,6 +7,24 @@ use Silex\Provider;
 
 class AcmeApplication extends Application
 {
+    /**
+     * Add new controllers in this method.
+     */
+    private function registerControllers()
+    {
+        $this->mount('/', new \Acme\HelloController());
+    }
+
+    use Application\TwigTrait;
+    use Application\UrlGeneratorTrait;
+    use Application\MonologTrait;
+    use Application\TranslationTrait;
+
+    /**
+     * INI settings from config/config.ini
+     *
+     * @var array
+     */
     private $config = array();
 
     public function run()
@@ -16,12 +34,6 @@ class AcmeApplication extends Application
         $this->registerControllers();
 
         parent::run();
-    }
-
-    private function registerControllers()
-    {
-        $this->mount('/', new \Acme\AcmeHelloController());
-        $this->mount('/', new \Acme\HelloController());
     }
 
     private function loadConfiguration()
