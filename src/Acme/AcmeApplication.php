@@ -12,7 +12,7 @@ class AcmeApplication extends Application
      */
     private function registerControllers()
     {
-        $this->mount('/', new \Acme\HelloController());
+        $this->mount('/', new \Acme\Hello\HelloController());
     }
 
     use Application\TwigTrait;

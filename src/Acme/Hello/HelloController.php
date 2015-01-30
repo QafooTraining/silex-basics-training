@@ -1,9 +1,10 @@
 <?php
 
-namespace Acme;
+namespace Acme\Hello;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Acme\AcmeController;
 
 class HelloController extends AcmeController
 {
