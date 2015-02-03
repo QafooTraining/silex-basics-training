@@ -10,13 +10,17 @@ class HelloController extends AcmeController
 {
     public function registerRoutes()
     {
-        $this->registerRoute('helloworld', '/hello-world', 'helloAction');
+        $this->registerRoute('helloworld', '/hello/{name}', 'helloAction');
         $this->registerRoute('hello_twig', '/hello-twig', 'twigAction');
     }
 
-    public function helloAction(Request $request)
+    public function helloAction($name, Request $request)
     {
-        return new Response('Hello World!');
+        $string = $this->app['db']->fetchColumn(
+            'SELECT CONCAT("Hello", ?)', array($name)
+        );
+
+        return new Response($string);
     }
 
     public function twigAction(Request $request)

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d326dfed9cf56fc90d1b420f9c583f2a",
+    "hash": "1e672053823abfa926b860388fd2d8e0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1748,6 +1748,49 @@
                 "templating"
             ],
             "time": "2015-01-25 17:32:08"
+        },
+        {
+            "name": "umpirsky/i18n-routing-service-provider",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/umpirsky/I18nRoutingServiceProvider.git",
+                "reference": "d983d4d46faa3bedae4cbfd17c3243aad020b9ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/umpirsky/I18nRoutingServiceProvider/zipball/d983d4d46faa3bedae4cbfd17c3243aad020b9ea",
+                "reference": "d983d4d46faa3bedae4cbfd17c3243aad020b9ea",
+                "shasum": ""
+            },
+            "require": {
+                "silex/silex": "~1.1"
+            },
+            "require-dev": {
+                "symfony/translation": "~2.4"
+            },
+            "suggest": {
+                "symfony/translation": "~2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Umpirsky\\Silex\\I18nRouting": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saša Stamenković",
+                    "email": "umpirsky@gmail.com",
+                    "homepage": "http://umpirsky.com"
+                }
+            ],
+            "description": "Silex i18n routing service provider.",
+            "time": "2014-01-12 16:15:54"
         }
     ],
     "packages-dev": [],
@@ -1758,7 +1801,8 @@
         "symfony/monolog-bridge": 0,
         "symfony/translation": 0,
         "symfony/browser-kit": 0,
-        "symfony/css-selector": 0
+        "symfony/css-selector": 0,
+        "umpirsky/i18n-routing-service-provider": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

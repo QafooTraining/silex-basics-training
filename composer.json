@@ -9,7 +9,8 @@
         "symfony/browser-kit": "@stable",
         "symfony/css-selector": "@stable",
         "sorien/silex-dbal-profiler": "~1.1",
-        "doctrine/dbal": "~2.5"
+        "doctrine/dbal": "~2.5",
+        "umpirsky/i18n-routing-service-provider": "dev-master"
     },
     "autoload": {
         "psr-0": {"Acme\\": "src"}

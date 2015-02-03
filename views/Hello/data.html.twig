@@ -1,0 +1,12 @@
+{#
+    array(
+        new User('benjamin', 'benjamin@qafoo.com'), class User { public $name; $email; },
+
+
+        array('name' => 'benjamin', 'email' => 'benjamin@qafoo.com'),
+    )
+
+{% for user in users %}
+    {{ user.name }}
+    {{ user.email }}
+{% endfor %}

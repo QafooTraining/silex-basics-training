@@ -67,6 +67,9 @@ class AcmeApplication extends Application
         $this->register(new Provider\TwigServiceProvider(), array(
             'twig.path' => __DIR__.'/../../views',
         ));
+        $this->register(new \Umpirsky\Silex\I18nRouting\Provider\I18nRoutingServiceProvider());
+
+
         if ($this['debug']) {
             $this->register(new Provider\WebProfilerServiceProvider(), array(
                 'profiler.cache_dir' => sys_get_temp_dir() . '/profiler',
@@ -82,8 +85,14 @@ class AcmeApplication extends Application
         $this->register(new Provider\SessionServiceProvider());
 
         $this->register(new Provider\TranslationServiceProvider(), array(
-            'locale_fallbacks' => array('de'),
+            'locale' => 'de',
         ));
+
+        $this['translator.domains'] = array(
+                'routes' => array(
+                    'de' => array('/hello/{name}' => '/hallo/{name}'),
+                )
+            );
 
         $this['translator'] = $this->share($this->extend('translator', function($translator, $app) {
             // TODO: Add database translator
@@ -93,11 +102,16 @@ class AcmeApplication extends Application
         $this->register(new Provider\DoctrineServiceProvider(), array(
             'db.options' => array(
                 'driver'   => 'mysqli',
+                'host'     => $this->config['database.host'],
                 'dbname'   => $this->config['database.name'],
                 'user'     => $this->config['database.user'],
                 'password' => $this->config['database.password'],
                 'charset'  => 'UTF8',
             ),
         ));
+
+        $this->before(function (Request $request, Application $app) {
+            $request->setLocale('de');
+                }, Application::EARLY_EVENT);
     }
 }
